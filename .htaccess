@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+RewriteEngine On
+Options +FollowSymlinks
+RewriteBase /
+
+# php_value upload_max_filesize 20M
+# php_value post_max_size 20M
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^.*$ index.php [NC,L]
+</IfModule>
+
+<FilesMatch ".(htaccess|htpasswd|bak|ini|log)$">
+Order Allow,Deny
+Deny from all
+</FilesMatch>
